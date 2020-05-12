@@ -19,6 +19,12 @@ const HomeScreen = ({navigation})=>{
             <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('ModalTransicoesScreen')}>
                 <Text style={styles.textButton}>Transições de Modal</Text>
             </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('LoadingScreen')}>
+                <Text style={styles.textButton}>Barra de Loading</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={styles.button} onPress={()=>navigation.navigate('JogoDaVelhaScreen')}>
+                <Text style={styles.textButton}>Jogo da Velha</Text>
+            </TouchableOpacity>
         </View>
     );
 }

@@ -11,12 +11,15 @@ import {createStackNavigator} from '@react-navigation/stack';
 import HomeScreen from './src/screens/HomeScreen';
 import BasicoScreen from './src/screens/BasicoScreen';
 import ModalTransicoesScreen from './src/screens/ModalTransicoesScreen';
+import LoadingScreen from './src/screens/LoadingScreen';
+import JogoDaVelhaScreen from './src/screens/JogoDaVelhaScreen';
 
 /*
     Função que inicializa o app.
  */
 const Stack = createStackNavigator();
 function App() {
+    console.disableYellowBox = true; //habilitar para ver advertências do react native no dispositivo
     return (
         <NavigationContainer>
             <Stack.Navigator
@@ -33,6 +36,14 @@ function App() {
                     name="ModalTransicoesScreen"
                     component={ModalTransicoesScreen}
                     options={{title: 'Transições de Modal', headerStyle: {backgroundColor: '#a50000'}, headerTintColor: '#fff'}} />
+                <Stack.Screen
+                    name="LoadingScreen"
+                    component={LoadingScreen}
+                    options={{title: 'Loading', headerStyle: {backgroundColor: '#a50000'}, headerTintColor: '#fff'}} />
+                <Stack.Screen
+                    name="JogoDaVelhaScreen"
+                    component={JogoDaVelhaScreen}
+                    options={{title: 'Loading', headerStyle: {backgroundColor: '#a50000'}, headerTintColor: '#fff'}} />
             </Stack.Navigator>
         </NavigationContainer>
     );
