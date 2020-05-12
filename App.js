@@ -1,66 +1,40 @@
-import React, {useState, useEffect} from 'react';
-import {View, Text, Animated, TouchableOpacity, StyleSheet} from 'react-native';
+/**
+ * Vídeo #1 ao #11: React Hooks - Módulo 17 - B7Web
+ * Animaçeõs.
+ * by: Vagner Pinto
+ */
 
-const App = () => {
+import 'react-native-gesture-handler';
+import React from 'react';
+import {NavigationContainer} from '@react-navigation/native';
+import {createStackNavigator} from '@react-navigation/stack';
+import HomeScreen from './src/screens/HomeScreen';
+import BasicoScreen from './src/screens/BasicoScreen';
+import ModalTransicoesScreen from './src/screens/ModalTransicoesScreen';
 
-    const [largura, setLargura] = useState(new Animated.Value(250));
-    const [altura, setAltura] = useState(new Animated.Value(50));
-    const [opacidade, setOpacidade] = useState(new Animated.Value(0.0));
-
-    useEffect(() => {
-        Animated.timing(
-            opacidade,
-            {
-                toValue: 1,
-                duration: 2000
-            },
-        ).start();
-    }, []); //componentDidMount
-
-    const handlerButton = ()=>{
-        Animated.timing(
-            altura,
-            {
-                toValue: 100,
-                duration: 2000
-            },
-        ).start();
-    }
-
+/*
+    Função que inicializa o app.
+ */
+const Stack = createStackNavigator();
+function App() {
     return (
-        <View style={{flex: 2, justifyContent: 'center', alignItems: 'center'}}>
-            <Animated.View style={{
-                opacity:opacidade,
-                width: largura,
-                height: altura,
-                justifyContent: 'center',
-                alignItems: 'center',
-                backgroundColor: 'red',
-            }}>
-                <Text style={{color: '#ffffff', fontSize: 25, textAlign: 'center'}}>Texto qualquer</Text>
-            </Animated.View>
-            <TouchableOpacity style={styles.button} onPress={handlerButton}>
-                <Text style={styles.textButton}>Animar na altura</Text>
-            </TouchableOpacity>
-        </View>
+        <NavigationContainer>
+            <Stack.Navigator
+                initialRouteName="HomeScreen" >
+                <Stack.Screen
+                    name="Home"
+                    component={HomeScreen}
+                    options={{headerLeft: null, title: 'Home', headerStyle: {backgroundColor: '#a50000'}, headerTintColor: '#fff'}} />
+                <Stack.Screen
+                    name="BasicoScreen"
+                    component={BasicoScreen}
+                    options={{title: 'Básico de Animações', headerStyle: {backgroundColor: '#a50000'}, headerTintColor: '#fff'}} />
+                <Stack.Screen
+                    name="ModalTransicoesScreen"
+                    component={ModalTransicoesScreen}
+                    options={{title: 'Transições de Modal', headerStyle: {backgroundColor: '#a50000'}, headerTintColor: '#fff'}} />
+            </Stack.Navigator>
+        </NavigationContainer>
     );
-};
+}
 export default App;
-
-const styles = StyleSheet.create({
-    button: {
-        width:220,
-        height:50,
-        alignItems:'center',
-        backgroundColor: '#006400',
-        borderRadius: 5,
-        padding: 15,
-        paddingHorizontal: 20,
-        margin: 20
-    },
-    textButton:{
-        fontSize:14,
-        color:'#ffffff',
-        fontWeight:'bold'
-    }
-});
