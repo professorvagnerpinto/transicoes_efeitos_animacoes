@@ -43,7 +43,7 @@ function App() {
                 <Stack.Screen
                     name="JogoDaVelhaScreen"
                     component={JogoDaVelhaScreen}
-                    options={{title: 'Loading', headerStyle: {backgroundColor: '#a50000'}, headerTintColor: '#fff'}} />
+                    options={{title: 'Jogo da Velha', headerStyle: {backgroundColor: '#a50000'}, headerTintColor: '#fff'}} />
             </Stack.Navigator>
         </NavigationContainer>
     );
